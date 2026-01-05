@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("com.gradleup.shadow") version "9.3.0"
 }
 
 group = "dev.iamgabriel"
@@ -15,6 +16,10 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT")
+    implementation("net.dv8tion:JDA:6.2.1") {
+        exclude(module = "opus-java")
+        exclude(module="tink")
+    }
 }
 
 java {

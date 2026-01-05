@@ -1,0 +1,7 @@
+name: DiscordMinecraftOnlinePlugin
+version: 1.0.0
+main: dev.iamgabriel.DiscordMinecraftOnlinePlugin.Plugin
+description: A plugin that shows the players online on the server in a discord message.
+author: iamgabrieltv
+website: https://iamgabriel.dev
+api-version: "1.21.11"
