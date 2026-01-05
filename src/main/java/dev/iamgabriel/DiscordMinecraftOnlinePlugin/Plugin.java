@@ -84,7 +84,11 @@ public class Plugin extends JavaPlugin implements Listener, EventListener {
     public void onEvent(@NonNull GenericEvent event) {
         if (event instanceof ReadyEvent) {
             getComponentLogger().info(Component.text("Discord API is ready!", NamedTextColor.GREEN));
-            event.getJDA().getPresence().setPresence(OnlineStatus.ONLINE, Activity.playing("Lunar SMP"));
+            event.getJDA().getPresence().setStatus(OnlineStatus.ONLINE);
+            String activityText = getConfig().getString("activity-text");
+            if (activityText != null && !activityText.isEmpty()) {
+                event.getJDA().getPresence().setActivity(Activity.playing(activityText));
+            }
             channel = jda.getTextChannelById(Objects.requireNonNull(getConfig().getString("discord-channel")));
             updateMessage(null);
         }

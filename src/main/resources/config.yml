@@ -1,2 +1,3 @@
 discord-token: "input-token"
 discord-channel: "input-channelId"
+activity-text: "this shows as what the bot is playing"
