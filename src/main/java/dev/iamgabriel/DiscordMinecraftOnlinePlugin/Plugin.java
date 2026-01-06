@@ -13,6 +13,7 @@ import net.dv8tion.jda.api.hooks.EventListener;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -39,6 +40,9 @@ public class Plugin extends JavaPlugin implements Listener, EventListener {
                 .addEventListeners(this)
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
+
+        int pluginId = 28738;
+        Metrics metrics = new Metrics(this, pluginId);
 
         getComponentLogger().info(Component.text("DiscordMinecraftOnlinePlugin was enabled successfully!", NamedTextColor.GREEN));
     }
