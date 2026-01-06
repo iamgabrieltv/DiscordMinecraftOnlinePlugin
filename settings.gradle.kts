@@ -1,1 +1,1 @@
-rootProject.name = "DiscordMinecraftOnlinePlugin"
+rootProject.name = "DiscordPlayerList"
