@@ -31,4 +31,5 @@ tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJ
     configurations = listOf(project.configurations.runtimeClasspath.get())
     relocate("org.bstats", project.group.toString())
     relocate("net.dv8tion", project.group.toString())
+    minimize()
 }
