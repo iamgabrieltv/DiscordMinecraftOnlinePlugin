@@ -10,7 +10,6 @@ import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.events.session.ShutdownEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
-import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bstats.bukkit.Metrics;
@@ -38,7 +37,6 @@ public class Plugin extends JavaPlugin implements Listener, EventListener {
         Bukkit.getPluginManager().registerEvents(this, this);
         jda = JDABuilder.createDefault(getConfig().getString("discord-token"))
                 .addEventListeners(this)
-                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .build();
 
         int pluginId = 28738;

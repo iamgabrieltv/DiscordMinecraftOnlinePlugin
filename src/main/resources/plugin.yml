@@ -1,5 +1,5 @@
 name: "DiscordPlayerList"
-version: 1.1.0
+version: 1.1.1
 main: dev.iamgabriel.DiscordMinecraftOnlinePlugin.Plugin
 description: A plugin that shows the players online on the server in a discord message.
 author: iamgabrieltv
