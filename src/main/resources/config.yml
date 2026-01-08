@@ -1,3 +1,4 @@
 discord-token: "input-token"
 discord-channel: "input-channelId"
 activity-text: "this shows as what the bot is playing"
+purpur-afk-support: true # If true, the plugin will update the list once a player goes AFK on the Purpur AFK/idle system and adds the prefix/suffix to the name
