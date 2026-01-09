@@ -12,6 +12,7 @@ import net.dv8tion.jda.api.events.session.ShutdownEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -25,16 +26,28 @@ import org.jspecify.annotations.NonNull;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static org.bukkit.Bukkit.getOnlinePlayers;
+import static org.bukkit.Bukkit.*;
 
 public class Plugin extends JavaPlugin implements Listener, EventListener {
     private JDA jda;
     private TextChannel channel;
+    public boolean isPurpur() {
+        try {
+            Class.forName("org.purpurmc.purpur.PurpurConfig");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         Bukkit.getPluginManager().registerEvents(this, this);
+        if (isPurpur()) {
+            Bukkit.getPluginManager().registerEvents(new PurpurAFKListener(this), this);
+        }
+
         jda = JDABuilder.createDefault(getConfig().getString("discord-token"))
                 .addEventListeners(this)
                 .build();
@@ -54,7 +67,7 @@ public class Plugin extends JavaPlugin implements Listener, EventListener {
                     }
                     return true;
                 })
-                .map(Player::getName)
+                .map(player -> MiniMessage.miniMessage().serialize(player.playerListName()))
                 .collect(Collectors.joining("\n"));
         String finalPlayerList = playerList.isEmpty() ? "No players online." : playerList;
 
@@ -74,7 +87,8 @@ public class Plugin extends JavaPlugin implements Listener, EventListener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        updateMessage(null);
+        // Wait for 2 ticks to allow for other plugins to change the display name
+        getScheduler().runTaskLater(this, () -> updateMessage(null), 2);
     }
 
     @EventHandler
