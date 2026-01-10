@@ -27,7 +27,7 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
-tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+tasks.shadowJar {
     configurations = listOf(project.configurations.runtimeClasspath.get())
     relocate("org.bstats", project.group.toString())
     relocate("net.dv8tion", project.group.toString())
