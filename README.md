@@ -8,6 +8,21 @@ If you have the idle timeout set in `server.properties` and have `idle-timeout.k
 ![example](https://github.com/user-attachments/assets/6ea4caf2-279a-4b23-8c78-e14484bbf2de)
 
 # Setup guide
-1. Install the plugin
-2. Edit the config and set the discord bot token and channel id
-3. Restart server and hopefully see results!!!
+1. Login to the [Discord Developer Portal](https://discord.com/developers/applications) and create a new application.
+2. Go to the "Installation" tab in the sidebar and add "bot" scope to the guild install and give the bot the "Send Messages"
+<table>
+  <tr>
+    <td><img height="10%" alt="image" src="https://github.com/user-attachments/assets/7ce0d8b1-3c94-47bf-954b-92a07eaff2e2" /></td>
+    <td><img alt="{BC944926-F4FC-4C54-BBC6-BA9721C3D60C}" src="https://github.com/user-attachments/assets/980c943e-69ad-4df8-977d-7cf08c94a15b" /></td>
+  </tr>
+</table>
+
+3. Copy the install link and paste it in ur browser to add the bot to your server.
+4. Now go to the "Bot" tab in the sidebar, reset the bot token and copy the new one.
+<img width="731" height="104" alt="{AFF12DCA-C687-4514-83B8-C8445D6E8B09}" src="https://github.com/user-attachments/assets/bb8ae394-b2e8-45ed-b839-e2f01a960b2c" />
+
+5. Put the bot token in the plugin config.
+6. Now create a channel in your discord server where the bot should send the player list.
+7. Copy the channel id by right-clicking on it and clicking "Copy Channel ID". If you don't see the option, google "How to enable developer mode discord".
+8. Put the channel id in the config.
+9. Restart the server and the plugin should work now!!!
